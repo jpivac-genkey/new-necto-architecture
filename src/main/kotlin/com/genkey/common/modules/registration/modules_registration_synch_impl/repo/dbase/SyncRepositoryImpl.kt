@@ -1,9 +1,9 @@
 package com.genkey.common.modules.registration.modules_registration_synch_impl.repo.dbase
 
 import com.genkey.common.modules.basic.RepoResultState
-import com.genkey.common.modules.registration._modules_registration_common.domain.Subject
-import com.genkey.common.modules.registration._modules_registration_common.repo.SubjectReadRepository
-import com.genkey.common.modules.registration._modules_registration_common.repo.dbase.SubjectReadRepositoryImpl
+import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.SubjectReadRepository
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.dbase.SubjectReadRepositoryImpl
 import com.genkey.common.modules.registration.modules_registration_synch_impl.repo.SyncRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SyncRepositoryImpl : SyncRepository
 {
-    val subjectReadRepository: SubjectReadRepository = SubjectReadRepositoryImpl() //DI injected
+    private val subjectReadRepository: SubjectReadRepository = SubjectReadRepositoryImpl() //DI injected
 
     override fun getNotSyncedSubjects(): SyncRepository.NotSyncedSubjects
     {
@@ -30,7 +30,7 @@ class SyncRepositoryImpl : SyncRepository
             override val totalCount: RepoResultState<Int>
                 get() = TODO("Not yet implemented")
 
-            override fun getSubjects(fromIndex: Int, toIndex: Int): Flow<RepoResultState<List<Subject>>>
+            override fun getSubjects(fromIndex: Int, toIndex: Int): Flow<RepoResultState<List<UUID>>>
             {
                 TODO("Not yet implemented")
                 //subjectReadRepository.readSubject(subjectID)
@@ -38,7 +38,7 @@ class SyncRepositoryImpl : SyncRepository
         }
     }
 
-    override fun markAsSynced(subject: Subject): RepoResultState<Unit>
+    override fun markAsSynced(subjectID: UUID): RepoResultState<Unit>
     {
         TODO("Not yet implemented")
         //just set the current date in the 'synchronizedDate' column of the above-mentioned table

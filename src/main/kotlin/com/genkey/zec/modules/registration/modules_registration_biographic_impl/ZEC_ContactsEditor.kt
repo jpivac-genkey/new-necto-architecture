@@ -2,7 +2,7 @@ package com.genkey.zec.modules.registration.modules_registration_biographic_impl
 
 import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.domain.Contact
+import com.genkey.common.modules.registration._modules_registration_domain.Contact
 import com.genkey.common.modules.registration.modules_registration_biographic_impl.ContactsEditor_Impl
 import com.genkey.zec.modules.registration._modules_registration_common.domain.ZEC_Contact
 

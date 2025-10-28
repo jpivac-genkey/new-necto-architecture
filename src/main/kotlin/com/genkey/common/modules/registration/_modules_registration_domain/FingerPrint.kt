@@ -1,4 +1,4 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.fingerprints.module_fingerprints_capture_api.FPCaptureAPI
@@ -42,7 +42,7 @@ class FingerPrint(
             return when (fp) {
                 is FPCaptureAPI.FingerPrint.TraumaFingerPrint -> FingerPrint(
                     UUID.UNASSIGNED,
-                    fp.idc, FingerPrint.TraumaType.createFrom(fp.traumaType),
+                    fp.idc, TraumaType.createFrom(fp.traumaType),
                     fp.traumaDetails, fp.isTraumaPermanent
                 )
 

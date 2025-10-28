@@ -2,8 +2,8 @@ package com.genkey.zec.modules.registration._modules_registration_common.repo.db
 
 import com.genkey.common.modules.basic.RepoResultState
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.domain.Subject
-import com.genkey.common.modules.registration._modules_registration_common.repo.RegistrationRepository
+import com.genkey.common.modules.registration._modules_registration_domain.Subject
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.RegistrationRepository
 
 class  ZEC_RegistrationRepositoryImpl: RegistrationRepository
 {

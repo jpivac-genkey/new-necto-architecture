@@ -2,7 +2,7 @@ package com.genkey.common.modules.registration._modules_registration_main_impl.u
 
 import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.domain.*
+import com.genkey.common.modules.registration._modules_registration_domain.*
 import java.util.*
 
 class AddNewSubject_usecase : AbstractSubjectUseCase()
@@ -24,11 +24,8 @@ class AddNewSubject_usecase : AbstractSubjectUseCase()
         val _fingerPrints = fpCaptureAPI.captureNewFingerPrints()
         val fingerPrints: FingerPrints = FingerPrints.createFrom(_fingerPrints)
 
-        val _signature = signatureAPI.captureSignature()
-        val signature : Signature = Signature.createFrom(_signature)
-
-        val _documents = documentAPI.captureDocuments()
-        val documents: List<Document> = _documents.map { Document.createFrom(it)}
+        val signature : Signature = signatureAPI.captureSignature()
+        val documents: List<Document> = documentAPI.captureDocuments()
 
         val biographics = Biographics(basicBiographics,citizenship, disabilities,address, contacts)
         val subject = Subject(

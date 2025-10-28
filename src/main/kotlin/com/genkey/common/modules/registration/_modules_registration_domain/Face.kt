@@ -1,4 +1,4 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
@@ -26,7 +26,7 @@ import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
  */
 class Face(
     val id: UUID,
-    val image:Image,
+    val image: Image,
     val thumbnailImage: Image?,
     val isForcedCapture: Boolean? = false
 )

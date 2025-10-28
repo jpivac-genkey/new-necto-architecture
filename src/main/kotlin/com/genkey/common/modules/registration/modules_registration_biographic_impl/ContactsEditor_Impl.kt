@@ -2,7 +2,7 @@ package com.genkey.common.modules.registration.modules_registration_biographic_i
 
 import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.domain.Contact
+import com.genkey.common.modules.registration._modules_registration_domain.Contact
 import com.genkey.common.modules.registration.modules_registration_biographic_api.ContactsEditor
 
 open class ContactsEditor_Impl: ContactsEditor
@@ -15,7 +15,7 @@ open class ContactsEditor_Impl: ContactsEditor
         return listOf(contact1, contact2)
     }
 
-    protected open suspend fun createSingleContact():Contact
+    protected open suspend fun createSingleContact(): Contact
     {
         //show empty fields
         fillFieldsWithContact(null)
@@ -38,7 +38,7 @@ open class ContactsEditor_Impl: ContactsEditor
         return listOf(updatedContact1, updatedContact2)
     }
 
-    protected open suspend fun updateSingleContact(existingContact: Contact):Contact
+    protected open suspend fun updateSingleContact(existingContact: Contact): Contact
     {
         //fill the fields with the values from the existing contact
         fillFieldsWithContact(existingContact)

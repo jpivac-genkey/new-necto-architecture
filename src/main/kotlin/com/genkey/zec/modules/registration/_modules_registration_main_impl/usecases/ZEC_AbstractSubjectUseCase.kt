@@ -2,7 +2,7 @@ package com.genkey.zec.modules.registration._modules_registration_main_impl.usec
 
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
-import com.genkey.common.modules.registration._modules_registration_common.repo.RegistrationRepository
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.RegistrationRepository
 import com.genkey.common.modules.registration._modules_registration_main_impl.components.SummaryView
 import com.genkey.common.modules.registration._modules_registration_main_impl.usecases.AbstractSubjectUseCase
 import com.genkey.common.modules.registration.modules_registration_biographic_api.ContactsEditor

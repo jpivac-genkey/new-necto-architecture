@@ -8,8 +8,8 @@ import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
 import com.genkey.common.modules.face.module_face_capture_impl.FaceCaptureAPI_Impl
 import com.genkey.common.modules.fingerprints.module_fingerprints_capture_api.FPCaptureAPI
 import com.genkey.common.modules.fingerprints.module_fingerprints_capture_impl.FPCaptureAPI_Impl
-import com.genkey.common.modules.registration._modules_registration_common.repo.RegistrationRepository
-import com.genkey.common.modules.registration._modules_registration_common.repo.dbase.RegistrationRepositoryImpl
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.RegistrationRepository
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.dbase.RegistrationRepositoryImpl
 import com.genkey.common.modules.registration._modules_registration_main_impl.components.SummaryView
 import com.genkey.common.modules.registration.modules_registration_biographic_api.*
 import com.genkey.common.modules.registration.modules_registration_biographic_impl.*

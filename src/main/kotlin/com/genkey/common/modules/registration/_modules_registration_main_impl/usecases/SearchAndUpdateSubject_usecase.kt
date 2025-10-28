@@ -6,7 +6,7 @@ import com.genkey.common.modules.face.module_face_verify_api.FaceVerificationAPI
 import com.genkey.common.modules.face.module_face_verify_impl.FaceVerificationAPI_Impl
 import com.genkey.common.modules.fingerprints.module_fingerprints_verify_api.FPVerificationAPI
 import com.genkey.common.modules.fingerprints.module_fingerprints_verify_impl.FPVerificationAPI_Impl
-import com.genkey.common.modules.registration._modules_registration_common.domain.*
+import com.genkey.common.modules.registration._modules_registration_domain.*
 import com.genkey.common.modules.registration.modules_registration_search_api.SearchAPI
 import com.genkey.common.modules.registration.modules_registration_search_impl.SearchAPI_Impl
 
@@ -53,11 +53,8 @@ class SearchAndUpdateSubject_usecase : AbstractSubjectUseCase()
         val _fingerPrints = fpCaptureAPI.updateFingerPrints(subject.biometrics.fingerPrints!!.convert())
         val updatedFingerPrints: FingerPrints = FingerPrints.createFrom(_fingerPrints)
 
-        val _signature = signatureAPI.updateSignature(subject.signature!!.convert())
-        val updateSignature : Signature = Signature.createFrom(_signature)
-
-        val _documents = documentAPI.updateDocuments(subject.documents!!.map { it.convert() })
-        val updatedDocumens: List<Document> = _documents.map { Document.createFrom(it)}
+        val updateSignature : Signature = signatureAPI.updateSignature(subject.signature!!)
+        val updatedDocumens: List<Document> = documentAPI.updateDocuments(subject.documents!!)
 
         val updatedBiographics = Biographics(
             updatedBasicBiographics,

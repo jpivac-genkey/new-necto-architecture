@@ -1,7 +1,8 @@
 package com.genkey.common.modules.document.module_document_impl
 
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
-import com.genkey.common.modules.document.module_document_api.DocumentAPI.Document
+import com.genkey.common.modules.registration._modules_registration_domain.Document
+
 
 open class DocumentAPI_Impl: DocumentAPI
 {

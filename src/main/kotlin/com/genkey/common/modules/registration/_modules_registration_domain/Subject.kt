@@ -1,4 +1,4 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
 import com.genkey.common.modules.basic.UUID
 import java.util.*

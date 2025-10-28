@@ -1,11 +1,11 @@
-package com.genkey.common.modules.registration._modules_registration_common.repo.dbase
+package com.genkey.common.modules.registration._modules_registration_main_impl.repo.dbase
 
 import com.genkey.common.modules.basic.RepoResultState
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.domain.Subject
-import com.genkey.common.modules.registration._modules_registration_common.repo.RegistrationRepository
-import com.genkey.common.modules.registration._modules_registration_common.repo.SubjectReadRepository
-import com.genkey.common.modules.registration._modules_registration_common.repo.SubjectSaveRepository
+import com.genkey.common.modules.registration._modules_registration_domain.Subject
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.RegistrationRepository
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.SubjectReadRepository
+import com.genkey.common.modules.registration._modules_registration_main_impl.repo.SubjectSaveRepository
 
 class  RegistrationRepositoryImpl: SubjectReadRepository by SubjectReadRepositoryImpl(),
                                    SubjectSaveRepository by SubjectSaveRepositoryImpl(),

@@ -1,4 +1,4 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
 import com.genkey.common.modules.basic.UUID
 
@@ -27,7 +27,7 @@ class Image(
 {
     companion object
     {
-        fun createFrom(id: UUID = UUID.UNASSIGNED, imageBytes: ByteArray):Image
+        fun createFrom(id: UUID = UUID.UNASSIGNED, imageBytes: ByteArray): Image
         {
             //Fill the other fields
             //"imageBytes" in its header have info on format, resolution, height,...

@@ -1,4 +1,4 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.fingerprints.module_fingerprints_capture_api.FPCaptureAPI
@@ -31,7 +31,7 @@ class FingerPrints(
     {
         fun createFrom(_fingerPrints: List<FPCaptureAPI.FingerPrint>): FingerPrints
         {
-            return FingerPrints(UUID.UNASSIGNED,null, _fingerPrints.map { FingerPrint.createForm(it)})
+            return FingerPrints(UUID.UNASSIGNED,null, _fingerPrints.map { FingerPrint.createForm(it) })
         }
     }
 

@@ -1,7 +1,6 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 
 /*
 CREATE TABLE public.signatures_profiles (
@@ -29,35 +28,3 @@ class Signature(
     val impossibleToSignReason: String? = null,
     val image: Image?
 )
-{
-    companion object
-    {
-        fun createFrom(_signature: SignatureAPI.Signature): Signature
-        {
-            if(_signature is SignatureAPI.Signature.GoodSignature)
-            {
-                val image = Image.createFrom(UUID.UNASSIGNED, _signature.image)
-                return Signature(UUID.UNASSIGNED, false,null, image)
-            }
-            else
-            {
-                val reason = (_signature as SignatureAPI.Signature.ImpossibleToSign).reason
-                return Signature(UUID.UNASSIGNED, true, reason, null)
-            }
-        }
-    }
-
-
-    fun convert(): SignatureAPI.Signature
-    {
-        if(isImpossibleToSign == false)
-        {
-            return SignatureAPI.Signature.GoodSignature(this.image!!.imageBytes)
-        }
-        else
-        {
-            return SignatureAPI.Signature.ImpossibleToSign(this.impossibleToSignReason!!)
-        }
-    }
-
-}

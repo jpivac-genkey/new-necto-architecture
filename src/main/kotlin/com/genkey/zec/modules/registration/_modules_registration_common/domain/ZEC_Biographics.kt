@@ -1,8 +1,12 @@
 package com.genkey.zec.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.registration._modules_registration_common.domain.*
-import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.EligibilityStatus
-import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.Gender
+import com.genkey.common.modules.registration._modules_registration_domain.Biographics.EligibilityStatus
+import com.genkey.common.modules.registration._modules_registration_domain.Biographics.Gender
+import com.genkey.common.modules.registration._modules_registration_domain.Address
+import com.genkey.common.modules.registration._modules_registration_domain.Biographics
+import com.genkey.common.modules.registration._modules_registration_domain.Citizenship
+import com.genkey.common.modules.registration._modules_registration_domain.Disability
 import java.util.*
 
 

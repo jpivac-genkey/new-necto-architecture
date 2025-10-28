@@ -1,7 +1,7 @@
-package com.genkey.common.modules.registration._modules_registration_common.domain
+package com.genkey.common.modules.registration._modules_registration_domain
 
-import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.EligibilityStatus
-import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.Gender
+import com.genkey.common.modules.registration._modules_registration_domain.Biographics.EligibilityStatus
+import com.genkey.common.modules.registration._modules_registration_domain.Biographics.Gender
 import java.util.*
 
 /*
@@ -72,7 +72,7 @@ open class Biographics(
 
         }
 
-    open fun getBasicBiographics():BasicBiographics
+    open fun getBasicBiographics(): BasicBiographics
     {
         return BasicBiographics(identificationNumber, identificationType, externalCode,
             eligibilityStatus, firstName, middleName, lastName, lastName2, gender, dateOfBirth)

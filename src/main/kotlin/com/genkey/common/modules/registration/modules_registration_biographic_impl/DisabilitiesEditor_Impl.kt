@@ -1,7 +1,7 @@
 package com.genkey.common.modules.registration.modules_registration_biographic_impl
 
 import com.genkey.common.modules.basic.Composable
-import com.genkey.common.modules.registration._modules_registration_common.domain.Disability
+import com.genkey.common.modules.registration._modules_registration_domain.Disability
 import com.genkey.common.modules.registration.modules_registration_biographic_api.DisabilitiesEditor
 
 //this is just a GUI component (it can be a part of the screen or a  whole screen)
