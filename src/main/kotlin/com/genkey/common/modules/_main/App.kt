@@ -6,7 +6,7 @@ import com.genkey.common.modules.registration._modules_registration_main_impl.Re
 import com.genkey.common.modules.settings.module_settings_api.SettingsAPI
 import com.genkey.common.modules.users.module_users_api.UsersAPI
 import com.genkey.common.modules.users.module_users_impl.UsersAPI_Impl
-import com.genkey.zec.settings.module_settings_impl.ZEC_SettingsAPI_Impl
+import com.genkey.zec.modules.settings.module_settings_impl.ZEC_SettingsAPI_Impl
 import java.awt.Button
 
 open class App

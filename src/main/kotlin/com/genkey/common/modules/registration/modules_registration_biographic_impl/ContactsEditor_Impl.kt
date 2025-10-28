@@ -4,7 +4,6 @@ import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.registration._modules_registration_common.domain.Contact
 import com.genkey.common.modules.registration.modules_registration_biographic_api.ContactsEditor
-import com.genkey.zec.registration._modules_registration_common.domain.ZEC_Contact
 
 open class ContactsEditor_Impl: ContactsEditor
 {
