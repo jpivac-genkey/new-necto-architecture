@@ -23,41 +23,22 @@ CREATE TABLE public.signatures_profiles (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
-class Signature(
-    val id: UUID,
-    val isImpossibleToSign: Boolean? = false,
-    val impossibleToSignReason: String? = null,
-    val image: Image?
-)
+interface IIdSignature: SignatureAPI.ISignature, IHavingID
+
+open class Signature(override val id: UUID): IIdSignature
 {
-    companion object
+    data class GoodSignature(private val signature: Signature, override val image: ByteArray):
+        IIdSignature by signature, SignatureAPI.ISignature.IGoodSignature
     {
-        fun createFrom(_signature: SignatureAPI.Signature): Signature
-        {
-            if(_signature is SignatureAPI.Signature.GoodSignature)
-            {
-                val image = Image.createFrom(UUID.UNASSIGNED, _signature.image)
-                return Signature(UUID.UNASSIGNED, false,null, image)
-            }
-            else
-            {
-                val reason = (_signature as SignatureAPI.Signature.ImpossibleToSign).reason
-                return Signature(UUID.UNASSIGNED, true, reason, null)
-            }
-        }
+        constructor(id: UUID, image: ByteArray): this(Signature(id), image)
+        constructor(goodSignature: SignatureAPI.ISignature.IGoodSignature): this(UUID.UNASSIGNED, goodSignature.image)
     }
 
-
-    fun convert(): SignatureAPI.Signature
+    data class ImpossibleToSign(private val signature: Signature, override val reason: String):
+        IIdSignature by signature, SignatureAPI.ISignature.IImpossibleToSign
     {
-        if(isImpossibleToSign == false)
-        {
-            return SignatureAPI.Signature.GoodSignature(this.image!!.imageBytes)
-        }
-        else
-        {
-            return SignatureAPI.Signature.ImpossibleToSign(this.impossibleToSignReason!!)
-        }
+        constructor(id: UUID, reason: String): this(Signature(id), reason)
+        constructor(goodSignature: SignatureAPI.ISignature.IImpossibleToSign): this(UUID.UNASSIGNED, goodSignature.reason)
     }
-
 }
+

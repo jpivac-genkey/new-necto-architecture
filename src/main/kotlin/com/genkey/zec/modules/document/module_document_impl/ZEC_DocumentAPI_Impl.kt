@@ -1,13 +1,33 @@
 package com.genkey.zec.modules.document.module_document_impl
 
-import com.genkey.common.modules.document.module_document_api.DocumentAPI.Document
+import com.genkey.common.modules.document.module_document_api.DocumentAPI.*
 import com.genkey.common.modules.document.module_document_impl.DocumentAPI_Impl
+import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
+import com.genkey.zec.modules.document.module_document_impl.domain.ZEC_Document
+import com.genkey.zec.modules.document.module_document_impl.domain.ZEC_DocumentPage
+import java.util.*
 
-class ZEC_DocumentAPI_Impl : DocumentAPI_Impl()
+class ZEC_DocumentAPI_Impl : DocumentAPI_Impl(),ZEC_DocumentAPI
 {
-    override suspend fun captureDocuments(): List<Document>
+    override suspend fun captureDocuments(): List<IDocument>
     {
         // a different logic for ZEC project, so this method is being overriden
-        TODO()
+        val zecDocumentpage = ZEC_DocumentPage(
+            null,
+            1,
+            ByteArray(0),
+            zecField1 = 12345)
+
+        val zecDocument = ZEC_Document(DocumentType.REGISTRATION_DOCUMENTS,
+            "1234",
+            DocumentFormat.DOC,
+            mutableListOf(zecDocumentpage),
+            Date(),
+            CaptureMethod.CAPTURE,
+            zecField2 = 1213245)
+
+        return listOf(zecDocument)
     }
+
+
 }

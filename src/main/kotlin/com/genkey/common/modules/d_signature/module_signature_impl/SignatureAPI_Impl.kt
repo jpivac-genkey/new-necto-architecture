@@ -2,19 +2,19 @@ package com.genkey.common.modules.d_signature.module_signature_impl
 
 import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
-import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI.Signature
+import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI.ISignature
 
-class  SignatureAPI_Impl: SignatureAPI
+open class  SignatureAPI_Impl: SignatureAPI
 {
     @Composable
-    override suspend fun captureSignature(): Signature
+    override suspend fun captureSignature(): ISignature
     {
-        return Signature.ImpossibleToSign("")
+        return ISignature.IImpossibleToSign("")
     }
 
-    override suspend fun updateSignature(existing:Signature): Signature
+    override suspend fun updateSignature(existing:ISignature): ISignature
     {
-        return Signature.ImpossibleToSign("")
+        return ISignature.IImpossibleToSign("")
     }
 }
 

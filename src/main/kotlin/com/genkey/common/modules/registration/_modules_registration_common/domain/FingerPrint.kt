@@ -25,74 +25,13 @@ CREATE TABLE public.fingerprints (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
-class FingerPrint(
-    val id: UUID,
-    val idc: Int,
-    val traumaType: TraumaType? = null,
-    val traumaDetails: String? = null,
-    val isTraumaPermanent: Boolean? = false,
-    val isImpossibleToCapture: Boolean? = false,
-    val impossibleToCaptureReason: String? = null,
-    val image: Image? = null
-)
+open class FingerPrint
 {
-    companion object
-    {
-        fun createForm(fp: FPCaptureAPI.FingerPrint): FingerPrint {
-            return when (fp) {
-                is FPCaptureAPI.FingerPrint.TraumaFingerPrint -> FingerPrint(
-                    UUID.UNASSIGNED,
-                    fp.idc, FingerPrint.TraumaType.createFrom(fp.traumaType),
-                    fp.traumaDetails, fp.isTraumaPermanent
-                )
+    open class GoodFingerPrint(val id: UUID, idc:Int, image: ByteArray) : FPCaptureAPI.FingerPrint.GoodFingerPrint(idc, image)
 
-                is FPCaptureAPI.FingerPrint.ImpossibleToCapture -> FingerPrint(
-                    UUID.UNASSIGNED,
-                    fp.idc, null, null,
-                    null, true, fp.reason
-                )
+    open class ImpossibleToCapture(val id: UUID, idc:Int, reason: String) : FPCaptureAPI.FingerPrint.ImpossibleToCapture(idc, reason)
 
-                is FPCaptureAPI.FingerPrint.GoodFingerPrint -> FingerPrint(
-                    UUID.UNASSIGNED,
-                    fp.idc, null, null,
-                    null, null, null,
-                    Image.createFrom(UUID.UNASSIGNED, fp.image)
-                )
-            }
-        }
-    }
-
-
-    fun convert(): FPCaptureAPI.FingerPrint
-    {
-        isImpossibleToCapture?.let {
-            return FPCaptureAPI.FingerPrint.ImpossibleToCapture(idc, impossibleToCaptureReason!!)
-        }
-        traumaType?.let {
-            return FPCaptureAPI.FingerPrint.TraumaFingerPrint(idc, it.convert(), traumaDetails!!, isTraumaPermanent!!)
-        }
-
-        return FPCaptureAPI.FingerPrint.GoodFingerPrint(idc, image!!.imageBytes)
-    }
-
-    enum class TraumaType
-    {
-        ;
-        companion object
-        {
-            fun createFrom(traumaType: FPCaptureAPI.FingerPrint.TraumaFingerPrint.TraumaType): TraumaType
-            {
-                TODO()
-            }
-        }
-
-        fun convert() : FPCaptureAPI.FingerPrint.TraumaFingerPrint.TraumaType
-        {
-            TODO()
-        }
-    }
-
-
-
-
+    open class TraumaFingerPrint(val id: UUID, idc:Int, traumaType: TraumaType,
+                                 traumaDetails: String, isTraumaPermanent: Boolean):
+        FPCaptureAPI.FingerPrint.TraumaFingerPrint(idc, traumaType, traumaDetails, isTraumaPermanent)
 }

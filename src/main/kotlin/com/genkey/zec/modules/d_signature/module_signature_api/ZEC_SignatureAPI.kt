@@ -1,13 +1,17 @@
 package com.genkey.zec.modules.d_signature.module_signature_api
 
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
-import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI.Signature
+
 
 interface ZEC_SignatureAPI : SignatureAPI
 {
     //some other type of signature
-    sealed class ZEC_Signature: Signature()
+    interface IZEC_Signature: SignatureAPI.ISignature
     {
-        data class GoodSignatureCopiedFromSource(val image: ByteArray): Signature()
+        interface IGoodSignatureCopiedFromSource: IZEC_Signature
+        {
+            val image: ByteArray
+            val sourceImage: ByteArray
+        }
     }
 }

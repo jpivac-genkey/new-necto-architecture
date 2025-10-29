@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.document.module_document_api.DocumentAPI
 
 /*
 CREATE TABLE public.documents_pages (
@@ -20,12 +21,20 @@ CREATE TABLE public.documents_pages (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
-class DocumentPage(
-    val id: UUID,
-    val pageCode: String? = null,
-    val pageNumber: Int,
-    val image: Image
-)
-{
 
+interface IIdDocumentPage: DocumentAPI.IDocumentPage, IHavingID
+
+data class DocumentPage(
+    override val id: UUID,
+    override val pageCode: String? = null,
+    override val pageNumber: Int,
+    override val image: ByteArray
+):IIdDocumentPage
+{
+    constructor(_documentPage: DocumentAPI.IDocumentPage ):this(
+        UUID.UNASSIGNED,
+        _documentPage.pageCode,
+        _documentPage.pageNumber,
+        _documentPage.image
+    )
 }

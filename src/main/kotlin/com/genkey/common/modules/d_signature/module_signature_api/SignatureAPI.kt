@@ -1,22 +1,27 @@
 package com.genkey.common.modules.d_signature.module_signature_api
 
 import com.genkey.common.modules.basic.Composable
-import com.genkey.common.modules.basic.UUID
 
 
 interface SignatureAPI
 {
     @Composable
-    suspend fun captureSignature(): Signature
+    suspend fun captureSignature(): ISignature
 
     @Composable
-    suspend fun updateSignature(existing:Signature): Signature
+    suspend fun updateSignature(existing:ISignature): ISignature
 
     //it must be open (not sealed) if we want to derive from it
-    open class Signature
+    interface ISignature
     {
-        data class GoodSignature(val image: ByteArray): Signature()
-        data class ImpossibleToSign(val reason: String): Signature()
+        interface IGoodSignature:ISignature
+        {
+            val image: ByteArray
+        }
+        interface IImpossibleToSign:ISignature
+        {
+            val reason: String
+        }
     }
 }
 
