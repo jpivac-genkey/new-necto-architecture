@@ -1,5 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
 
@@ -27,7 +28,7 @@ open class DocumentPage(
     val id: UUID,
     override val pageCode: String? = null,
     override val pageNumber: Int,
-    override val image: ByteArray
+    override val image: Image
 ):DocumentAPI.IDocumentPage
 {
     //used for receiving the output from Document module
@@ -35,6 +36,6 @@ open class DocumentPage(
         UUID.UNASSIGNED,
         _documentPage.pageCode,
         _documentPage.pageNumber,
-        _documentPage.image
+        Image(_documentPage.image)
     )
 }

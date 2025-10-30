@@ -1,6 +1,7 @@
 package com.genkey.common.modules.document.module_document_api
 
 import com.genkey.common.modules.basic.Composable
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.registration._modules_registration_common.domain.Disability.TraumaType
 import com.genkey.common.modules.basic.ValInterface
 import java.util.*
@@ -25,7 +26,7 @@ interface  DocumentAPI
     interface IDocumentPage {
         val pageCode: String?
         val pageNumber: Int
-        val image: ByteArray
+        val image: ImageBytesHolder
     }
 
     interface DocumentType: ValInterface

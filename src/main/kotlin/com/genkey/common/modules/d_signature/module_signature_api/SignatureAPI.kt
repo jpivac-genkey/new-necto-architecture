@@ -1,6 +1,7 @@
 package com.genkey.common.modules.d_signature.module_signature_api
 
 import com.genkey.common.modules.basic.Composable
+import com.genkey.common.modules.basic.ImageBytesHolder
 
 
 interface SignatureAPI
@@ -16,7 +17,7 @@ interface SignatureAPI
     {
         interface IGoodSignature:ISignature
         {
-            val image: ByteArray
+            val image: ImageBytesHolder
         }
         interface IImpossibleToSign:ISignature
         {

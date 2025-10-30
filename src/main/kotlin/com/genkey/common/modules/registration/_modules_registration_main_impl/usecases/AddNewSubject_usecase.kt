@@ -18,10 +18,10 @@ class AddNewSubject_usecase : AbstractSubjectUseCase()
         val citizenship: Citizenship = citizenshipEditor.createNew()
         val disabilities:List<Disability> = disabilitiesEditor.createNew()
 
-        val _face = faceCaptureAPI.captureNewFace()
-        val face = Face.createFrom(_face)
+        val _face = faceCaptureAPI.captureFace()
+        val face = Face(_face)
 
-        val _fingerPrints = fpCaptureAPI.captureNewFingerPrints()
+        val _fingerPrints = fpCaptureAPI.captureFingerPrints()
         val fingerPrints: FingerPrintSet = FingerPrintSet.FingerPrints(_fingerPrints)
 
         val _signature = signatureAPI.captureSignature()

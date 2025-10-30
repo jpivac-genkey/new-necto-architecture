@@ -1,5 +1,6 @@
 package com.genkey.zec.modules.document.module_document_impl
 
+import com.genkey.common.modules.basic.RawImageBytes
 import com.genkey.common.modules.document.module_document_api.DocumentAPI.*
 import com.genkey.common.modules.document.module_document_impl.DocumentAPI_Impl
 import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
@@ -15,7 +16,7 @@ class ZEC_DocumentAPI_Impl : DocumentAPI_Impl(),ZEC_DocumentAPI
         val zecDocumentpage = ZEC_DocumentPage(
             null,
             1,
-            ByteArray(0),
+            RawImageBytes(ByteArray(0)),
             zecField1 = 12345)
 
         val zecDocument = ZEC_Document(

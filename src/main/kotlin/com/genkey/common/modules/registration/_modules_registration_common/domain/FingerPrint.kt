@@ -1,7 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 import com.genkey.common.modules.fingerprints._module_fingerprints_common.FingerPrintsCommonAPI.IFingerPrint
 import com.genkey.common.modules.fingerprints._module_fingerprints_common.FingerPrintsCommonAPI.IFingerPrint.ITraumaFingerPrint.TraumaType
 
@@ -31,12 +30,13 @@ abstract class FingerPrint private constructor (val id: UUID, override val idc: 
 {
     open class GoodFingerPrint(id: UUID,
                                idc:Int,
-                               override val image: ByteArray):
+                               override val image: Image
+    ):
         FingerPrint(id, idc), IFingerPrint.IGoodFingerPrint
     {
         //used for receiving the output from FingerPrint Capture  module
         constructor(fingerPrint:IFingerPrint.IGoodFingerPrint):
-                this(UUID.UNASSIGNED, fingerPrint.idc, fingerPrint.image)
+                this(UUID.UNASSIGNED, fingerPrint.idc, Image(fingerPrint.image))
     }
 
 

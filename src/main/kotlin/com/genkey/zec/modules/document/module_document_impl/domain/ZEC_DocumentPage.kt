@@ -1,5 +1,6 @@
 package com.genkey.zec.modules.document.module_document_impl.domain
 
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
 import com.genkey.common.modules.document.module_document_impl.domain.DocumentPage
 import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
@@ -13,7 +14,7 @@ data class ZEC_DocumentPage private constructor(
     //the only constructor to be used
     constructor(pageCode: String? = null,
                 pageNumber: Int,
-                image: ByteArray,
+                image: ImageBytesHolder,
                 zecField1:Int):
             this(DocumentPage(pageCode, pageNumber, image ),zecField1 )
 }

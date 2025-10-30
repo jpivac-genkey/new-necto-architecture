@@ -7,7 +7,7 @@ import com.genkey.common.modules.fingerprints._module_fingerprints_common.Finger
 interface  FPCaptureAPI: FingerPrintsCommonAPI
 {
     @Composable
-    suspend fun captureNewFingerPrints(): IFingerPrints
+    suspend fun captureFingerPrints(): IFingerPrints
 
     suspend fun updateFingerPrints(existing: IFingerPrints): IFingerPrints
 }

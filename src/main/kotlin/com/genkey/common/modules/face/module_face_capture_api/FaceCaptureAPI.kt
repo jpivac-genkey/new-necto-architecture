@@ -1,18 +1,20 @@
 package com.genkey.common.modules.face.module_face_capture_api
 
 import com.genkey.common.modules.basic.Composable
+import com.genkey.common.modules.basic.ImageBytesHolder
+import com.genkey.common.modules.face._module_face_common.FaceCommonAPI
 
-interface  FaceCaptureAPI
+interface  FaceCaptureAPI: FaceCommonAPI
 {
     @Composable
-    suspend fun captureNewFace():  Face //image returned
+    suspend fun captureFace():  IFace //image returned
 
     @Composable
-    suspend fun updateFace(existingFace:  Face ):Face //image returned
+    suspend fun updateFace(existingFace:  IFace ):IFace //image returned
 
-    class Face(
-        val image: ByteArray,
-        val thumbnailImage: ByteArray?,
-        val isForcedCapture: Boolean? = false
-    )
+    interface IFace {
+        val image: ImageBytesHolder
+        val thumbnailImage: ImageBytesHolder?
+        val isForcedCapture: Boolean?
+    }
 }

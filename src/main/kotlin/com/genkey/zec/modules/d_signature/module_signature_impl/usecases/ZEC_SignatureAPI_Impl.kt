@@ -1,6 +1,8 @@
 package com.genkey.zec.modules.d_signature.module_signature_impl.usecases
 
 import com.genkey.common.modules.basic.Composable
+import com.genkey.common.modules.basic.ImageBytesHolder
+import com.genkey.common.modules.basic.RawImageBytes
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 import com.genkey.common.modules.d_signature.module_signature_impl.Signature
 import com.genkey.common.modules.d_signature.module_signature_impl.SignatureAPI_Impl
@@ -17,7 +19,7 @@ class  ZEC_SignatureAPI_Impl: SignatureAPI_Impl(), ZEC_SignatureAPI
 
     override suspend fun updateSignature(existing:SignatureAPI.ISignature): SignatureAPI.ISignature
     {
-        return ZEC_Signature.GoodSignatureCopiedFromSource(ByteArray(0), ByteArray(0))
+        return ZEC_Signature.GoodSignatureCopiedFromSource(RawImageBytes(ByteArray(0)), RawImageBytes(ByteArray(0)))
     }
 }
 

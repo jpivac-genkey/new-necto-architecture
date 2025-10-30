@@ -1,5 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 
@@ -28,10 +29,10 @@ abstract class Signature: SignatureAPI.ISignature
 {
     abstract val id: UUID
 
-    data class GoodSignature(override val id: UUID, override val image: ByteArray): Signature(), SignatureAPI.ISignature.IGoodSignature
+    data class GoodSignature(override val id: UUID, override val image: Image): Signature(), SignatureAPI.ISignature.IGoodSignature
     {
         //used for receiving the output from Signature module
-        constructor(goodSignature: SignatureAPI.ISignature.IGoodSignature): this(UUID.UNASSIGNED, goodSignature.image)
+        constructor(goodSignature: SignatureAPI.ISignature.IGoodSignature): this(UUID.UNASSIGNED, Image(goodSignature.image))
     }
 
     data class ImpossibleToSign(override val id: UUID, override val reason: String):  Signature(), SignatureAPI.ISignature.IImpossibleToSign

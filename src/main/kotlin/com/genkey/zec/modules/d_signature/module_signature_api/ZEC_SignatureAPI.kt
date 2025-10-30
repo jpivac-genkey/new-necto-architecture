@@ -1,5 +1,6 @@
 package com.genkey.zec.modules.d_signature.module_signature_api
 
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 
 
@@ -10,8 +11,8 @@ interface ZEC_SignatureAPI : SignatureAPI
     {
         interface IGoodSignatureCopiedFromSource: IZEC_Signature
         {
-            val image: ByteArray
-            val sourceImage: ByteArray
+            val image: ImageBytesHolder
+            val sourceImage: ImageBytesHolder
         }
     }
 }

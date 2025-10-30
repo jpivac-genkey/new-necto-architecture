@@ -1,5 +1,6 @@
 package com.genkey.common.modules.fingerprints._module_fingerprints_common
 
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.basic.ValInterface
 
 interface FingerPrintsCommonAPI
@@ -15,7 +16,7 @@ interface FingerPrintsCommonAPI
 
         interface  IGoodFingerPrint: IFingerPrint
         {
-            val image: ByteArray
+            val image: ImageBytesHolder
         }
 
         interface  IImpossibleToCapture: IFingerPrint

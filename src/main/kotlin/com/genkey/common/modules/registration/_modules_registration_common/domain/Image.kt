@@ -1,5 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
+import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.basic.ValInterface
 
@@ -18,17 +19,17 @@ CREATE TABLE public.images (
  */
 class Image(
     val id: UUID = UUID.UNASSIGNED,
-    val imageBytes: ByteArray,
+    override val imageBytes: ByteArray,
     val hash: String? = null,
     val format: Format,
     val resolution: Int? = null,
     val height: Int? = null,
     val width: Int? = null
-)
+): ImageBytesHolder
 {
     companion object
     {
-        fun createFrom(id: UUID = UUID.UNASSIGNED, imageBytes: ByteArray):Image
+        operator fun invoke(imageBytes: ImageBytesHolder):Image
         {
             //Fill the other fields
             //"imageBytes" in its header have info on format, resolution, height,...
@@ -42,6 +43,4 @@ class Image(
     {
 
     }
-
-
 }

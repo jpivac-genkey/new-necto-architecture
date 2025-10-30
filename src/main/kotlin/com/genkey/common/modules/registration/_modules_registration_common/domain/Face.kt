@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.document.module_document_api.DocumentAPI
 import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
 
 /**
@@ -26,23 +27,15 @@ import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
  */
 open class Face(
     val id: UUID,
-    val image:Image,
-    val thumbnailImage: Image?,
-    val isForcedCapture: Boolean? = false
-)
+    override val image:Image,
+    override val thumbnailImage: Image?,
+    override val isForcedCapture: Boolean? = false
+):FaceCaptureAPI.IFace
 {
-    companion object
-    {
-        fun createFrom(_face: FaceCaptureAPI.Face): Face
-        {
-            val image = Image.createFrom(UUID.UNASSIGNED, _face.image)
-            val thumbnailImage = _face.thumbnailImage?.let { Image.createFrom(UUID.UNASSIGNED, it) }
-            return Face(UUID.UNASSIGNED, image, thumbnailImage, _face.isForcedCapture )
-        }
-    }
-
-    fun convert(): FaceCaptureAPI.Face
-    {
-        return FaceCaptureAPI.Face(image.imageBytes, thumbnailImage?.imageBytes, isForcedCapture)
-    }
+    //used for receiving the output from Document module
+    constructor(_face: FaceCaptureAPI.IFace): this(
+        UUID.UNASSIGNED,
+        Image(_face.image),
+        _face.thumbnailImage?.let{Image(it)},
+        _face.isForcedCapture)
 }

@@ -10,7 +10,7 @@ class FPCaptureAPI_Impl : AbstractModuleComp(), FPCaptureAPI
     private val configProvider = ConfigProvider()
 
     @Composable
-    override suspend fun captureNewFingerPrints(): IFingerPrints
+    override suspend fun captureFingerPrints(): IFingerPrints
     {
         val configuration = configProvider.getConfiguration()
         TODO()

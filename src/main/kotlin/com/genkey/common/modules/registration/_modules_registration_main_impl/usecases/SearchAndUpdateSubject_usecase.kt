@@ -47,8 +47,8 @@ class SearchAndUpdateSubject_usecase : AbstractSubjectUseCase()
         val updatedCitizenship: Citizenship = citizenshipEditor.update(subject.biographics.citizenship!!)
         val updatedDisabilities:List<Disability> = disabilitiesEditor.update(subject.biographics.disabilities!!)
 
-        val _face = faceCaptureAPI.updateFace(subject.biometrics?.face!!.convert())
-        val face = Face.createFrom(_face)
+        val _face = faceCaptureAPI.updateFace(subject.biometrics?.face!!)
+        val face = Face(_face)
 
         val _fingerPrints = fpCaptureAPI.updateFingerPrints(subject.biometrics.fingerPrints as FingerPrintSet.FingerPrints)
         val updatedFingerPrints: FingerPrintSet = FingerPrintSet.FingerPrints(_fingerPrints)
