@@ -1,6 +1,8 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IAddress
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdAddress
 
 /*
 
@@ -30,18 +32,16 @@ CREATE TABLE public.addresses_profiles (
  * has never been in the dbase.
  */
 class Address(
-    val id: UUID,
-    val addressType: AddressType,
-    val country: String? = null,
-    val region: String? = null,
-    val city: String? = null,
-    val address: String,
-    val addressDetails: String? = null,
-    val postalCode: String? = null,
-    val demarcationEntryId: Int? = null
-){
-    enum class AddressType
-    {
-        //do we already have the values somewhere in the code?
-    }
+    override val id: UUID,
+    override val addressType: AddressType,
+    override val country: String? = null,
+    override val region: String? = null,
+    override val city: String? = null,
+    override val address: String,
+    override val addressDetails: String? = null,
+    override val postalCode: String? = null,
+    override val demarcationEntryId: Int? = null
+):IIdAddress
+{
+
 }

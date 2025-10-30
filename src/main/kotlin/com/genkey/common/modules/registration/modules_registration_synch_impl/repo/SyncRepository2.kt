@@ -2,6 +2,7 @@ package com.genkey.common.modules.registration.modules_registration_synch_impl.r
 
 import com.genkey.common.modules.registration._modules_registration_common.domain.Subject
 import com.genkey.common.modules.basic.RepoResultState
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdSubject
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -14,9 +15,9 @@ interface SyncRepository2
 
     interface NotSyncedSubjects
     {
-        fun getNextSubjects(count:Int): Flow<RepoResultState<List<Subject>>>
+        fun getNextSubjects(count:Int): Flow<RepoResultState<List<IIdSubject>>>
     }
 
-    fun markAsSynced(subject: Subject): RepoResultState<Unit>
+    fun markAsSynced(subject: IIdSubject): RepoResultState<Unit>
     //or maybe this:  fun markAsSynced(subjectId: UUID):ResultState<Unit>
 }

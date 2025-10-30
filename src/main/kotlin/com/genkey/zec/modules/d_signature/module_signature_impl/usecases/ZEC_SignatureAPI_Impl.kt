@@ -5,7 +5,7 @@ import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 import com.genkey.common.modules.d_signature.module_signature_impl.Signature
 import com.genkey.common.modules.d_signature.module_signature_impl.SignatureAPI_Impl
 import com.genkey.zec.modules.d_signature.module_signature_api.ZEC_SignatureAPI
-import com.genkey.zec.modules.d_signature.module_signature_impl.ZEC_Signature
+import com.genkey.zec.modules.d_signature.module_signature_impl.domain.ZEC_Signature
 
 class  ZEC_SignatureAPI_Impl: SignatureAPI_Impl(), ZEC_SignatureAPI
 {

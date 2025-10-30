@@ -1,6 +1,8 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IContact
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdContact
 
 /*
 CREATE TABLE public.contacts_profiles (
@@ -23,15 +25,10 @@ CREATE TABLE public.contacts_profiles (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
+
 open class Contact(
-    val id: UUID,
-    val contactType: ContactType,
-    val contactInfo: String,
-    val isPrimary: Boolean
-)
-{
-    enum class ContactType{
-        PHONE,
-        EMAIl
-    }
-}
+    override val id: UUID,
+    override val contactType: IContact.ContactType,
+    override val contactInfo: String,
+    override val isPrimary: Boolean
+): IIdContact

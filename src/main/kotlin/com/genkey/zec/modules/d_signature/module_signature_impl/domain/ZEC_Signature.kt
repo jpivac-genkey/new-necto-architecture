@@ -1,4 +1,4 @@
-package com.genkey.zec.modules.d_signature.module_signature_impl
+package com.genkey.zec.modules.d_signature.module_signature_impl.domain
 
 import com.genkey.zec.modules.d_signature.module_signature_api.ZEC_SignatureAPI.IZEC_Signature
 

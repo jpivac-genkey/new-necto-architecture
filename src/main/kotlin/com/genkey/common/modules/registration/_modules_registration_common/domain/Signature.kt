@@ -2,6 +2,7 @@ package com.genkey.common.modules.registration._modules_registration_common.doma
 
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IHavingID
 
 /*
 CREATE TABLE public.signatures_profiles (
@@ -27,17 +28,23 @@ interface IIdSignature: SignatureAPI.ISignature, IHavingID
 
 open class Signature(override val id: UUID): IIdSignature
 {
-    data class GoodSignature(private val signature: Signature, override val image: ByteArray):
+    data class GoodSignature(private val signature: IIdSignature, override val image: ByteArray):
         IIdSignature by signature, SignatureAPI.ISignature.IGoodSignature
     {
+        //used for receiving the data from Repository
         constructor(id: UUID, image: ByteArray): this(Signature(id), image)
+
+        //used for receiving the output from Signature module
         constructor(goodSignature: SignatureAPI.ISignature.IGoodSignature): this(UUID.UNASSIGNED, goodSignature.image)
     }
 
-    data class ImpossibleToSign(private val signature: Signature, override val reason: String):
+    data class ImpossibleToSign(private val signature: IIdSignature, override val reason: String):
         IIdSignature by signature, SignatureAPI.ISignature.IImpossibleToSign
     {
+        //used for receiving the data from Repository
         constructor(id: UUID, reason: String): this(Signature(id), reason)
+
+        //used for receiving the output from Signature module
         constructor(goodSignature: SignatureAPI.ISignature.IImpossibleToSign): this(UUID.UNASSIGNED, goodSignature.reason)
     }
 }

@@ -3,6 +3,7 @@ package com.genkey.common.modules.registration._modules_registration_main_impl.u
 import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.registration._modules_registration_common.domain.*
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.*
 import java.util.*
 
 class AddNewSubject_usecase : AbstractSubjectUseCase()
@@ -12,11 +13,11 @@ class AddNewSubject_usecase : AbstractSubjectUseCase()
     {
         val registrationDate: Date = Date()
 
-        val basicBiographics: Biographics.BasicBiographics = basicBiographicsEditor.createNew()
-        val address: Address = addressEditor.createNew()
-        val contacts:List<Contact> = contactsEditor.createNew()
-        val citizenship: Citizenship = citizenshipEditor.createNew()
-        val disabilities:List<Disability> = disabilitiesEditor.createNew()
+        val basicBiographics: IBiographics.IBasicBiographics = basicBiographicsEditor.createNew()
+        val address: IIdAddress = addressEditor.createNew()
+        val contacts:List<IIdContact> = contactsEditor.createNew()
+        val citizenship: IIdCitizenship = citizenshipEditor.createNew()
+        val disabilities:List<IIdDisability> = disabilitiesEditor.createNew()
 
         val _face = faceCaptureAPI.captureNewFace()
         val face = Face.createFrom(_face)

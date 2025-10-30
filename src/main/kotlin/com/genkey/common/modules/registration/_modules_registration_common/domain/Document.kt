@@ -3,6 +3,7 @@ package com.genkey.common.modules.registration._modules_registration_common.doma
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
 import com.genkey.common.modules.document.module_document_api.DocumentAPI.*
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IHavingID
 import java.util.*
 
 /*
@@ -41,6 +42,7 @@ data class Document(
     override val captureMethod: CaptureMethod? = null
 ):IIdDocument
 {
+    //used for receiving the output from Document module
     constructor(_document:DocumentAPI.IDocument): this(
         UUID.UNASSIGNED,
         _document.documentType,

@@ -1,13 +1,12 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IBiometrics
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IFace
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdFace
 
-/**
- * No corresponding table in the dbase. This class is kind of aggregator of other tables.
- */
+
 open class Biometrics (
-    val face: Face?,
-    val fingerPrints: FingerPrints?,
-    )
-{
+    override val face: IIdFace?,
+    override val fingerPrints: FingerPrints?,
+    ): IBiometrics
 
-}

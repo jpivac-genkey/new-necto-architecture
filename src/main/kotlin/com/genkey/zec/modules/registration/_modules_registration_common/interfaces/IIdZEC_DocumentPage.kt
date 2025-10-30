@@ -1,0 +1,6 @@
+package com.genkey.zec.modules.registration._modules_registration_common.interfaces
+
+import com.genkey.common.modules.registration._modules_registration_common.domain.IIdDocumentPage
+import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
+
+interface IIdZEC_DocumentPage: ZEC_DocumentAPI.IZEC_DocumentPage, IIdDocumentPage

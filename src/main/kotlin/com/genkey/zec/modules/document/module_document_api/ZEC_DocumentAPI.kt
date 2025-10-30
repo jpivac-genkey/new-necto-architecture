@@ -9,6 +9,7 @@ interface ZEC_DocumentAPI : DocumentAPI {
     interface IZEC_Document: IDocument
     {
         val zecField2:Int
+        override val pages: List<IZEC_DocumentPage>
     }
 
     interface IZEC_DocumentPage: IDocumentPage

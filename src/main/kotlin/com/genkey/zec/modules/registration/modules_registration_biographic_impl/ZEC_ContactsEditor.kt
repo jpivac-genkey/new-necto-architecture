@@ -3,12 +3,13 @@ package com.genkey.zec.modules.registration.modules_registration_biographic_impl
 import com.genkey.common.modules.basic.Composable
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.registration._modules_registration_common.domain.Contact
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdContact
 import com.genkey.common.modules.registration.modules_registration_biographic_impl.ContactsEditor_Impl
 import com.genkey.zec.modules.registration._modules_registration_common.domain.ZEC_Contact
 
 class ZEC_ContactsEditor : ContactsEditor_Impl()
 {
-    override fun fillFieldsWithContact(contact: Contact?)
+    override fun fillFieldsWithContact(contact: IIdContact?)
     {
         super.fillFieldsWithContact(contact)
         contact?.let {
@@ -17,7 +18,7 @@ class ZEC_ContactsEditor : ContactsEditor_Impl()
         }
     }
 
-    override fun collectFromFields(uuid: UUID): Contact
+    override fun collectFromFields(uuid: UUID): IIdContact
     {
         val updatedContact = super.collectFromFields(uuid)
         val zecField1 = collectFromGUIControl() as Int
@@ -26,7 +27,7 @@ class ZEC_ContactsEditor : ContactsEditor_Impl()
     }
 
     @Composable
-    override fun showSingleContact(contact: Contact)
+    override fun showSingleContact(contact: IIdContact)
     {
         super.showSingleContact(contact)
 

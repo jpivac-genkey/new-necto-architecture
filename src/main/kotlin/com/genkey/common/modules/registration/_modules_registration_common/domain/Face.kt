@@ -2,6 +2,7 @@ package com.genkey.common.modules.registration._modules_registration_common.doma
 
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdFace
 
 /**
  * CREATE TABLE public.face_profiles (
@@ -24,12 +25,16 @@ import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
+
+
+
+
 class Face(
-    val id: UUID,
-    val image:Image,
-    val thumbnailImage: Image?,
-    val isForcedCapture: Boolean? = false
-)
+    override val id: UUID,
+    override val image:Image,
+    override val thumbnailImage: Image?,
+    override val isForcedCapture: Boolean? = false
+): IIdFace
 {
     companion object
     {

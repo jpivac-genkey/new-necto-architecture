@@ -2,6 +2,7 @@ package com.genkey.common.modules.registration._modules_registration_common.doma
 
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.IHavingID
 
 /*
 CREATE TABLE public.documents_pages (
@@ -31,6 +32,7 @@ data class DocumentPage(
     override val image: ByteArray
 ):IIdDocumentPage
 {
+    //used for receiving the output from Document module
     constructor(_documentPage: DocumentAPI.IDocumentPage ):this(
         UUID.UNASSIGNED,
         _documentPage.pageCode,

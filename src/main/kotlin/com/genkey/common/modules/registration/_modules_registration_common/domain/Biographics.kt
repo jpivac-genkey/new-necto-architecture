@@ -1,7 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
-import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.EligibilityStatus
-import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.Gender
+import com.genkey.common.modules.registration._modules_registration_common.interfaces.*
 import java.util.*
 
 /*
@@ -24,31 +23,29 @@ CREATE TABLE public.subjects (
 	CONSTRAINT fk_subjects_spire_transactions FOREIGN KEY (spire_transaction_id) REFERENCES public.spire_transactions(id)
 );
  */
-/**
- * It has the corresponding table in the dbase, but also this class aggregates other tables.
- */
+
 open class Biographics(
-    val identificationNumber: String,
-    val identificationType: String,
-    val externalCode: String? = null,
-    val eligibilityStatus: EligibilityStatus,
-    val firstName: String,
-    val middleName: String? = null,
-    val lastName: String,
-    val lastName2: String? = null,
-    val gender: Gender,
-    val dateOfBirth: Date? = null,
-    val citizenship: Citizenship? = null,
-    val disabilities: List<Disability>? = null,
-    val address: Address? = null,
-    val contacts: List<Contact>? = null
-    )
+    override val identificationNumber: String,
+    override val identificationType: String,
+    override val externalCode: String? = null,
+    override val eligibilityStatus: EligibilityStatus,
+    override val firstName: String,
+    override val middleName: String? = null,
+    override val lastName: String,
+    override val lastName2: String? = null,
+    override val gender: Gender,
+    override val dateOfBirth: Date? = null,
+    override val citizenship: IIdCitizenship? = null,
+    override val disabilities: List<IIdDisability>? = null,
+    override val address: IIdAddress? = null,
+    override val contacts: List<IIdContact>? = null
+    ): IBiographics
 {
-        constructor(basicBiographics: BasicBiographics,
-                    citizenship: Citizenship? = null,
-                    disabilities: List<Disability>? = null,
-                    address: Address? = null,
-                    contacts: List<Contact>? = null
+        constructor(basicBiographics: IBiographics.IBasicBiographics,
+                    citizenship: IIdCitizenship? = null,
+                    disabilities: List<IIdDisability>? = null,
+                    address: IIdAddress? = null,
+                    contacts: List<IIdContact>? = null
             ): this(basicBiographics.identificationNumber,
                     basicBiographics.identificationType,
                     basicBiographics.externalCode,
@@ -72,23 +69,25 @@ open class Biographics(
 
         }
 
-    open fun getBasicBiographics():BasicBiographics
+    open fun getBasicBiographics():IBiographics.IBasicBiographics
     {
         return BasicBiographics(identificationNumber, identificationType, externalCode,
             eligibilityStatus, firstName, middleName, lastName, lastName2, gender, dateOfBirth)
     }
 
+
+
     open class BasicBiographics (
-        val identificationNumber: String,
-        val identificationType: String,
-        val externalCode: String? = null,
-        val eligibilityStatus: EligibilityStatus,
-        val firstName: String,
-        val middleName: String? = null,
-        val lastName: String,
-        val lastName2: String? = null,
-        val gender: Gender,
-        val dateOfBirth: Date? = null)
+        override val identificationNumber: String,
+        override val identificationType: String,
+        override val externalCode: String? = null,
+        override val eligibilityStatus: EligibilityStatus,
+        override val firstName: String,
+        override val middleName: String? = null,
+        override val lastName: String,
+        override val lastName2: String? = null,
+        override val gender: Gender,
+        override val dateOfBirth: Date? = null):IBiographics.IBasicBiographics
 
 }
 
