@@ -1,6 +1,6 @@
 package com.genkey.common.modules.registration.modules_registration_biographic_api
 
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdCitizenship
+import com.genkey.common.modules.registration._modules_registration_common.domain.Citizenship
 
 
-interface CitizenshipEditor: Editor<IIdCitizenship>
+interface CitizenshipEditor: Editor<Citizenship>

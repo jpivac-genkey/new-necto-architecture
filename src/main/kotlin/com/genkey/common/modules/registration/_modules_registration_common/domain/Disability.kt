@@ -1,8 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IDisability
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdDisability
 
 /*
 CREATE TABLE public.disabilities_profiles (
@@ -24,10 +22,22 @@ CREATE TABLE public.disabilities_profiles (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
+open class Disability(
+    val id: UUID,
+    val disabilityType: TraumaType,
+    val disabilityDetails: TraumaDetail? = null,
+    val isPermanent: Boolean? = true
+)
+{
+    enum class TraumaType
+    {
+        OTHER, FACIAL, BLIND, MISSING_LIMB, ILLITERATE, UNABLE_TO_SIGN, DEAF, BAD_QUALITY, DUMB, DEAF_AND_DUMB, INCOMPETENT
+    }
 
-class Disability(
-    override val id: UUID,
-    override val disabilityType: IDisability.TraumaType,
-    override val disabilityDetails: IDisability.TraumaDetail? = null,
-    override val isPermanent: Boolean? = true
-): IIdDisability
+    enum class TraumaDetail
+    {
+        TRAUMA_BOTH, TRAUMA_FINGER, TRAUMA_LEFT, TRAUMA_OTHER, TRAUMA_RIGHT,
+        TRAUMA_LEFT_HAND, TRAUMA_RIGHT_HAND, TRAUMA_ALL
+    }
+
+}

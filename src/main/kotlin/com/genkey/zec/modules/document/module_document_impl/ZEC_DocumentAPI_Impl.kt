@@ -9,7 +9,7 @@ import java.util.*
 
 class ZEC_DocumentAPI_Impl : DocumentAPI_Impl(),ZEC_DocumentAPI
 {
-    override suspend fun captureDocuments(): List<IDocument>
+    override suspend fun captureDocuments(): List<ZEC_DocumentAPI.IZEC_Document>
     {
         // a different logic for ZEC project, so this method is being overriden
         val zecDocumentpage = ZEC_DocumentPage(
@@ -29,5 +29,9 @@ class ZEC_DocumentAPI_Impl : DocumentAPI_Impl(),ZEC_DocumentAPI
         return listOf(zecDocument)
     }
 
+    override suspend fun updateDocuments(existing: List<IDocument>): List<ZEC_DocumentAPI.IZEC_Document>
+    {
+        TODO()
+    }
 
 }

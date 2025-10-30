@@ -1,7 +1,9 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.fingerprints.module_fingerprints_capture_api.FPCaptureAPI
+import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
+import com.genkey.common.modules.fingerprints._module_fingerprints_common.FingerPrintsCommonAPI.IFingerPrint
+import com.genkey.common.modules.fingerprints._module_fingerprints_common.FingerPrintsCommonAPI.IFingerPrint.ITraumaFingerPrint.TraumaType
 
 /*
 CREATE TABLE public.fingerprints (
@@ -25,13 +27,64 @@ CREATE TABLE public.fingerprints (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
-open class FingerPrint
+abstract class FingerPrint private constructor (val id: UUID, override val idc: Int): IFingerPrint
 {
-    open class GoodFingerPrint(val id: UUID, idc:Int, image: ByteArray) : FPCaptureAPI.FingerPrint.GoodFingerPrint(idc, image)
+    open class GoodFingerPrint(id: UUID,
+                               idc:Int,
+                               override val image: ByteArray):
+        FingerPrint(id, idc), IFingerPrint.IGoodFingerPrint
+    {
+        //used for receiving the output from FingerPrint Capture  module
+        constructor(fingerPrint:IFingerPrint.IGoodFingerPrint):
+                this(UUID.UNASSIGNED, fingerPrint.idc, fingerPrint.image)
+    }
 
-    open class ImpossibleToCapture(val id: UUID, idc:Int, reason: String) : FPCaptureAPI.FingerPrint.ImpossibleToCapture(idc, reason)
 
-    open class TraumaFingerPrint(val id: UUID, idc:Int, traumaType: TraumaType,
-                                 traumaDetails: String, isTraumaPermanent: Boolean):
-        FPCaptureAPI.FingerPrint.TraumaFingerPrint(idc, traumaType, traumaDetails, isTraumaPermanent)
+    open class ImpossibleToCapture( id: UUID,
+                                   idc: Int,
+                                   override val reason: String):
+        FingerPrint(id, idc), IFingerPrint.IImpossibleToCapture
+    {
+        //used for receiving the output from FingerPrint Capture  module
+        constructor(fingerPrint:IFingerPrint.IImpossibleToCapture):
+                this(UUID.UNASSIGNED, fingerPrint.idc, fingerPrint.reason)
+    }
+
+
+
+    open class TraumaFingerPrint(id: UUID,
+                                 idc:Int,
+                                 override val traumaType: TraumaType,
+                                 override val traumaDetails: String,
+                                 override val isTraumaPermanent: Boolean):
+        FingerPrint(id, idc), IFingerPrint.ITraumaFingerPrint
+    {
+        //used for receiving the output from FingerPrint Capture  module
+        constructor(fingerPrint:IFingerPrint.ITraumaFingerPrint):
+                this(UUID.UNASSIGNED, fingerPrint.idc, fingerPrint.traumaType, fingerPrint.traumaDetails, fingerPrint.isTraumaPermanent)
+    }
+
+
+
+    //used for receiving the output from FingerPrint Capture  module
+    interface FingerPrintCreator
+    {
+        operator fun invoke(fingerPrint:IFingerPrint): FingerPrint
+    }
+
+    companion object: FingerPrintCreator
+    {
+        //used for receiving the output from FingerPrint Capture  module
+        override operator fun invoke(fingerPrint:IFingerPrint): FingerPrint
+        {
+            return when(fingerPrint)
+            {
+                is IFingerPrint.IGoodFingerPrint -> GoodFingerPrint(fingerPrint)
+                is IFingerPrint.IImpossibleToCapture -> ImpossibleToCapture(fingerPrint)
+                is IFingerPrint.ITraumaFingerPrint -> TraumaFingerPrint(fingerPrint)
+                else -> TODO("Impossible to come here")
+            }
+        }
+    }
+
 }

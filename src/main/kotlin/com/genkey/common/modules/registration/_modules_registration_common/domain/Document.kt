@@ -3,7 +3,6 @@ package com.genkey.common.modules.registration._modules_registration_common.doma
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.document.module_document_api.DocumentAPI
 import com.genkey.common.modules.document.module_document_api.DocumentAPI.*
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IHavingID
 import java.util.*
 
 /*
@@ -30,17 +29,15 @@ CREATE TABLE public.documents_profiles (
  * has never been in the dbase.
  */
 
-interface IIdDocument: DocumentAPI.IDocument, IHavingID
-
-data class Document(
-    override val id: UUID,
+open class Document(
+    val id: UUID,
     override val documentType: DocumentType,
     override val documentNumber: String? = null,
     override val documentFormat: DocumentFormat? = null,
-    override val pages: List<IIdDocumentPage>,
+    override val pages: List<DocumentPage>,
     override val captureDate: Date,
     override val captureMethod: CaptureMethod? = null
-):IIdDocument
+):DocumentAPI.IDocument
 {
     //used for receiving the output from Document module
     constructor(_document:DocumentAPI.IDocument): this(

@@ -1,9 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IBiographics
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IBiometrics
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdSubject
 import java.util.*
 
 /**
@@ -15,13 +12,11 @@ import java.util.*
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
-
-
 open class Subject(
-    override val id: UUID,
-    override val registrationDate: Date,
-    override val biographics: IBiographics,
-    override val biometrics: IBiometrics? = null,
-    override val signature: IIdSignature? = null,
-    override val documents: List<IIdDocument>? = null
-): IIdSubject
+    val id: UUID,
+    val registrationDate: Date,
+    open val biographics: Biographics,
+    val biometrics: Biometrics? = null,
+    open val signature: Signature? = null,
+    open val documents: List<Document>? = null
+)

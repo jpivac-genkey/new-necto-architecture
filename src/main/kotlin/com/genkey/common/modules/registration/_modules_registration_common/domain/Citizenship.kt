@@ -1,8 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.ICitizenship
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdCitizenship
 
 /*
 CREATE TABLE public.citizenship_profiles (
@@ -26,15 +24,27 @@ CREATE TABLE public.citizenship_profiles (
  * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
  * has never been in the dbase.
  */
+open class Citizenship(
+    val id: UUID,
+    val documentType: DocumentType,
+    val documentId: String,
+    val countryCode: CountryCode,
+    val nationality: Nationality? = null,
+    val isByBirth: Boolean
+)
+{
+    enum class DocumentType{
+        //do we already have the values somewhere in the code?
+    }
 
+    /*
+    For "nationality" and "countryCode" we can use just strings.
+    Or to go with enums where we predefine all possible values.
+     */
+    enum class Nationality{
 
-
-class Citizenship(
-    override val id: UUID,
-    override val documentType: ICitizenship.DocumentType,
-    override val documentId: String,
-    override val countryCode: ICitizenship.CountryCode,
-    override val nationality: ICitizenship.Nationality? = null,
-    override val isByBirth: Boolean
-): IIdCitizenship
-
+    }
+    enum class CountryCode{
+         //we can find the list of international official codes for all countries
+    }
+}

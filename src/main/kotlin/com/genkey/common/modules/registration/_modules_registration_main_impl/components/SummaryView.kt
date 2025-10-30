@@ -1,7 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_main_impl.components
 
 import com.genkey.common.modules.basic.Composable
-import com.genkey.common.modules.registration._modules_registration_common.domain.Subject
+import com.genkey.common.modules.registration._modules_registration_common.domain.*
 import com.genkey.common.modules.registration.modules_registration_biographic_api.*
 import com.genkey.common.modules.registration.modules_registration_biographic_impl.*
 
@@ -35,38 +35,38 @@ open class SummaryView
         }
 
         subject.biometrics?.fingerPrints?.let{
-            showFingerPrints()
+            showFingerPrints(it)
         }
 
         subject.biometrics?.face?.let{
-            showFace()
+            showFace(it)
         }
 
         subject.signature?.let{
-            showSignature()
+            showSignature(it)
         }
 
         subject.documents?.let{
-            showDocuments()
+            showDocuments(it)
         }
     }
 
-    protected open fun showFingerPrints()
+    protected open fun showFingerPrints(fingerPrints: FingerPrintSet)
     {
 
     }
 
-    protected open fun showFace()
+    protected open fun showFace(face: Face)
     {
 
     }
 
-    protected open fun showDocuments()
+    protected open fun showDocuments(documents: List<Document>)
     {
 
     }
 
-    protected open fun showSignature()
+    protected open fun showSignature(signature: Signature)
     {
 
     }

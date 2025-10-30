@@ -1,8 +1,6 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdImage
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IImage
 
 /*
 CREATE TABLE public.images (
@@ -18,14 +16,14 @@ CREATE TABLE public.images (
 
  */
 class Image(
-    override val id: UUID = UUID.UNASSIGNED,
-    override val imageBytes: ByteArray,
-    override val hash: String? = null,
-    override val format: Format,
-    override val resolution: Int? = null,
-    override val height: Int? = null,
-    override val width: Int? = null
-): IIdImage
+    val id: UUID = UUID.UNASSIGNED,
+    val imageBytes: ByteArray,
+    val hash: String? = null,
+    val format: Format,
+    val resolution: Int? = null,
+    val height: Int? = null,
+    val width: Int? = null
+)
 {
     companion object
     {

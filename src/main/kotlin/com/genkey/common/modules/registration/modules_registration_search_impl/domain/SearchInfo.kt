@@ -3,7 +3,7 @@ package com.genkey.common.modules.registration.modules_registration_search_impl.
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics
 import com.genkey.common.modules.registration._modules_registration_common.domain.Image
-import java.util.Date
+import java.util.*
 
 class SearchInfo (
     val subjectId: UUID,

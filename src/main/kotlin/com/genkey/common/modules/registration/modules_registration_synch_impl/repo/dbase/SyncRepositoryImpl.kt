@@ -1,7 +1,7 @@
 package com.genkey.common.modules.registration.modules_registration_synch_impl.repo.dbase
 
 import com.genkey.common.modules.basic.RepoResultState
-import com.genkey.common.modules.registration._modules_registration_common.interfaces.IIdSubject
+import com.genkey.common.modules.registration._modules_registration_common.domain.Subject
 import com.genkey.common.modules.registration._modules_registration_common.repo.SubjectReadRepository
 import com.genkey.common.modules.registration._modules_registration_common.repo.dbase.SubjectReadRepositoryImpl
 import com.genkey.common.modules.registration.modules_registration_synch_impl.repo.SyncRepository
@@ -30,7 +30,7 @@ class SyncRepositoryImpl : SyncRepository
             override val totalCount: RepoResultState<Int>
                 get() = TODO("Not yet implemented")
 
-            override fun getSubjects(fromIndex: Int, toIndex: Int): Flow<RepoResultState<List<IIdSubject>>>
+            override fun getSubjects(fromIndex: Int, toIndex: Int): Flow<RepoResultState<List<Subject>>>
             {
                 TODO("Not yet implemented")
                 //subjectReadRepository.readSubject(subjectID)
@@ -38,7 +38,7 @@ class SyncRepositoryImpl : SyncRepository
         }
     }
 
-    override fun markAsSynced(subject: IIdSubject): RepoResultState<Unit>
+    override fun markAsSynced(subject: Subject): RepoResultState<Unit>
     {
         TODO("Not yet implemented")
         //just set the current date in the 'synchronizedDate' column of the above-mentioned table

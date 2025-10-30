@@ -9,12 +9,12 @@ open class  SignatureAPI_Impl: SignatureAPI
     @Composable
     override suspend fun captureSignature(): ISignature
     {
-        return ISignature.IImpossibleToSign("")
+        return Signature.ImpossibleToSign("")
     }
 
     override suspend fun updateSignature(existing:ISignature): ISignature
     {
-        return ISignature.IImpossibleToSign("")
+        return Signature.ImpossibleToSign("")
     }
 }
 

@@ -3,7 +3,6 @@ package com.genkey.zec.modules.document.module_document_impl.domain
 import com.genkey.common.modules.document.module_document_api.DocumentAPI.*
 import com.genkey.common.modules.document.module_document_impl.domain.Document
 import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
-import com.genkey.zec.modules.registration._modules_registration_common.interfaces.IIdZEC_DocumentPage
 import java.util.*
 
 data class ZEC_Document private constructor (

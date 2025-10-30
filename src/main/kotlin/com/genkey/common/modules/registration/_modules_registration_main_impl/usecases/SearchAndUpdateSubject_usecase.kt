@@ -50,14 +50,14 @@ class SearchAndUpdateSubject_usecase : AbstractSubjectUseCase()
         val _face = faceCaptureAPI.updateFace(subject.biometrics?.face!!.convert())
         val face = Face.createFrom(_face)
 
-        val _fingerPrints = fpCaptureAPI.updateFingerPrints(subject.biometrics.fingerPrints!!.convert())
-        val updatedFingerPrints: FingerPrints = FingerPrints.createFrom(_fingerPrints)
+        val _fingerPrints = fpCaptureAPI.updateFingerPrints(subject.biometrics.fingerPrints as FingerPrintSet.FingerPrints)
+        val updatedFingerPrints: FingerPrintSet = FingerPrintSet.FingerPrints(_fingerPrints)
 
-        val _signature = signatureAPI.updateSignature(subject.signature!!.convert())
-        val updateSignature : Signature = Signature.createFrom(_signature)
+        val _signature = signatureAPI.updateSignature(subject.signature!!)
+        val updateSignature : Signature = Signature(_signature)
 
-        val _documents = documentAPI.updateDocuments(subject.documents!!.map { it.convert() })
-        val updatedDocumens: List<Document> = _documents.map { Document.createFrom(it)}
+        val _documents = documentAPI.updateDocuments(subject.documents!!)
+        val updatedDocumens: List<Document> = _documents.map { Document(it)}
 
         val updatedBiographics = Biographics(
             updatedBasicBiographics,

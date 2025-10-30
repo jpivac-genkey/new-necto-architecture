@@ -1,35 +1,37 @@
 package com.genkey.zec.modules.registration._modules_registration_main_impl.components
 
 import com.genkey.common.modules.basic.Composable
-import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
+import com.genkey.common.modules.registration._modules_registration_common.domain.Document
+import com.genkey.common.modules.registration._modules_registration_common.domain.Signature
 import com.genkey.common.modules.registration._modules_registration_main_impl.components.SummaryView
-import com.genkey.zec.modules.d_signature.module_signature_api.ZEC_SignatureAPI
-import com.genkey.zec.modules.registration._modules_registration_common.interfaces.IIdZEC_Subject
+import com.genkey.zec.modules.registration._modules_registration_common.domain.ZEC_Signature
+import com.genkey.zec.modules.registration._modules_registration_common.domain.ZEC_Subject
 
 open class ZEC_SummaryView : SummaryView()
 {
     @Composable
-    override fun showSignature()
+    override fun showSignature(signature: Signature)
     {
-        val subject: IIdZEC_Subject = TODO()
-
-        //a new type has to be covered
-        val signature: SignatureAPI.ISignature = subject.signature!!
         when(signature)
         {
-            is ZEC_SignatureAPI.IZEC_Signature.IGoodSignatureCopiedFromSource -> {
+            is ZEC_Signature.GoodSignatureCopiedFromSource -> {
                 signature.sourceImage //show source image
                 signature.image //show signature
             }
 
-            is SignatureAPI.ISignature.IGoodSignature -> {
+            is Signature.GoodSignature -> {
                 signature.image //show image
             }
 
-            is SignatureAPI.ISignature.IImpossibleToSign ->  {
+            is Signature.ImpossibleToSign ->  {
                 signature.reason //show reason
             }
         }
+    }
+
+    override fun showDocuments(documents: List<Document>)
+    {
+
     }
 
 }
