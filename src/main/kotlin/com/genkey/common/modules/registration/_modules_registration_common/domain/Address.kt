@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.basic.ValInterface
 
 /*
 
@@ -40,8 +41,12 @@ open class Address(
     val postalCode: String? = null,
     val demarcationEntryId: Int? = null
 ){
-    enum class AddressType
+
+    interface AddressType: ValInterface
+
+    enum class AddressTypeEnum(override val value: Int):AddressType
     {
         //do we already have the values somewhere in the code?
+        HOUSE(1)
     }
 }

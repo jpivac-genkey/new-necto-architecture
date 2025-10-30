@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.basic.ValInterface
 
 /*
 CREATE TABLE public.images (
@@ -35,7 +36,10 @@ class Image(
         }
     }
 
-    enum class Format{
+    interface Format: ValInterface
+
+    enum class FormatEnum(override val value: Int):Format
+    {
 
     }
 

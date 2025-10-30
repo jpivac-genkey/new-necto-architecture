@@ -1,5 +1,7 @@
 package com.genkey.common.modules.fingerprints._module_fingerprints_common
 
+import com.genkey.common.modules.basic.ValInterface
+
 interface FingerPrintsCommonAPI
 {
     interface  IFingerPrints
@@ -27,7 +29,9 @@ interface FingerPrintsCommonAPI
             val traumaDetails: String
             val isTraumaPermanent: Boolean
 
-            enum class TraumaType
+            interface TraumaType:ValInterface
+
+            enum class TraumaTypeEnum(override val value: Int): TraumaType
             {
                 //
             }

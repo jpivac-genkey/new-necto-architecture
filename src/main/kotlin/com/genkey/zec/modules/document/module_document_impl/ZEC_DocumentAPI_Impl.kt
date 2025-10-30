@@ -18,12 +18,13 @@ class ZEC_DocumentAPI_Impl : DocumentAPI_Impl(),ZEC_DocumentAPI
             ByteArray(0),
             zecField1 = 12345)
 
-        val zecDocument = ZEC_Document(DocumentType.REGISTRATION_DOCUMENTS,
+        val zecDocument = ZEC_Document(
+            DocumentTypeEnum.REGISTRATION_DOCUMENTS,
             "1234",
-            DocumentFormat.DOC,
+            ZEC_DocumentAPI.ZEC_DocumentFormatEnum.ZEC_DOC,
             mutableListOf(zecDocumentpage),
             Date(),
-            CaptureMethod.CAPTURE,
+            CaptureMethodEnum.CAPTURE,
             zecField2 = 1213245)
 
         return listOf(zecDocument)

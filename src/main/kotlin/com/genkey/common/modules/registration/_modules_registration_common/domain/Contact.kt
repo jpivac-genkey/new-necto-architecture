@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.basic.ValInterface
 
 /*
 CREATE TABLE public.contacts_profiles (
@@ -30,8 +31,11 @@ open class Contact(
     val isPrimary: Boolean
 )
 {
-    enum class ContactType{
-        PHONE,
-        EMAIl
+    interface ContactType: ValInterface
+
+
+    enum class ContactTypeEnum(override val value: Int): ContactType {
+        PHONE(1),
+        EMAIl(2)
     }
 }

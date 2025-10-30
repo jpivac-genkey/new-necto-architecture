@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.basic.ValInterface
 
 /*
 CREATE TABLE public.disabilities_profiles (
@@ -29,15 +30,34 @@ open class Disability(
     val isPermanent: Boolean? = true
 )
 {
-    enum class TraumaType
+    interface TraumaType: ValInterface
+    interface TraumaDetail: ValInterface
+
+    enum class TraumaEnum(override val value: Int): TraumaType
     {
-        OTHER, FACIAL, BLIND, MISSING_LIMB, ILLITERATE, UNABLE_TO_SIGN, DEAF, BAD_QUALITY, DUMB, DEAF_AND_DUMB, INCOMPETENT
+        OTHER(1),
+        FACIAL(2),
+        BLIND(3),
+        MISSING_LIMB(4),
+        ILLITERATE(5),
+        UNABLE_TO_SIGN(6),
+        DEAF(7),
+        BAD_QUALITY(8),
+        DUMB(9),
+        DEAF_AND_DUMB(10),
+        INCOMPETENT(11)
     }
 
-    enum class TraumaDetail
+    enum class TraumaDetailEnum(override val value: Int): TraumaDetail
     {
-        TRAUMA_BOTH, TRAUMA_FINGER, TRAUMA_LEFT, TRAUMA_OTHER, TRAUMA_RIGHT,
-        TRAUMA_LEFT_HAND, TRAUMA_RIGHT_HAND, TRAUMA_ALL
+        TRAUMA_BOTH(1),
+        TRAUMA_FINGER(2),
+        TRAUMA_LEFT(3),
+        TRAUMA_OTHER(4),
+        TRAUMA_RIGHT(5),
+        TRAUMA_LEFT_HAND(6),
+        TRAUMA_RIGHT_HAND(7),
+        TRAUMA_ALL(8)
     }
 
 }

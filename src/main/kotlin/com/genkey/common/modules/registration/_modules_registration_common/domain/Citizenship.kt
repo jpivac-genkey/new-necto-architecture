@@ -1,6 +1,7 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.basic.ValInterface
 
 /*
 CREATE TABLE public.citizenship_profiles (
@@ -33,18 +34,24 @@ open class Citizenship(
     val isByBirth: Boolean
 )
 {
-    enum class DocumentType{
+    interface DocumentType: ValInterface
+    interface CountryCode: ValInterface
+    interface Nationality: ValInterface
+
+    enum class DocumentTypeEnum(override val value: Int):DocumentType {
         //do we already have the values somewhere in the code?
     }
+
 
     /*
     For "nationality" and "countryCode" we can use just strings.
     Or to go with enums where we predefine all possible values.
      */
-    enum class Nationality{
+    enum class NationalityEnum(override val value: Int): Nationality {
 
     }
-    enum class CountryCode{
+
+    enum class CountryCodeEnum(override val value: Int): CountryCode {
          //we can find the list of international official codes for all countries
     }
 }

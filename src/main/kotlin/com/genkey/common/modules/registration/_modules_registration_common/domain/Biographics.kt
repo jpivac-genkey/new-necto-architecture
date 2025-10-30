@@ -1,7 +1,9 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
+import com.genkey.common.modules.basic.ValInterface
 import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.EligibilityStatus
 import com.genkey.common.modules.registration._modules_registration_common.domain.Biographics.Gender
+import com.genkey.common.modules.registration._modules_registration_common.domain.Citizenship.DocumentType
 import java.util.*
 
 /*
@@ -64,13 +66,19 @@ open class Biographics(
                     address,
                     contacts)
 
-        enum class Gender{
+    interface Gender: ValInterface
+    interface EligibilityStatus: ValInterface
 
-        }
 
-        enum class EligibilityStatus{
+    enum class GenderEnum(override val value: Int): Gender
+    {
 
-        }
+    }
+
+    enum class EligibilityStatusEnum(override val value: Int): EligibilityStatus
+    {
+
+    }
 
     open fun getBasicBiographics():BasicBiographics
     {

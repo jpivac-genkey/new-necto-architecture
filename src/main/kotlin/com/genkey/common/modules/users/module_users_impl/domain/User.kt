@@ -2,6 +2,7 @@ package com.genkey.common.modules.users.module_users_impl.domain
 
 
 import com.genkey.common.modules.basic.UUID
+import com.genkey.common.modules.basic.ValInterface
 import com.genkey.common.modules.users.module_users_api.UsersAPI
 import java.util.*
 
@@ -41,8 +42,13 @@ data class User(
     ) : UsersAPI.UserRoles
 {
 
-    enum class SecurityStatus
+    interface SecurityStatus: ValInterface
+
+    enum class SecurityStatusEnum(override val value: Int): SecurityStatus
     {
-        NEW, ACTIVE, DISABLED, REMOVED
+        NEW(1),
+        ACTIVE(2),
+        DISABLED(3),
+        REMOVED(4)
     }
 }
