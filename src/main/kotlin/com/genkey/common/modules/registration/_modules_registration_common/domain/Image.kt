@@ -18,7 +18,7 @@ CREATE TABLE public.images (
 
  */
 class Image(
-    val id: UUID = UUID.UNASSIGNED,
+    val id: UUID,
     override val imageBytes: ByteArray,
     val hash: String? = null,
     val format: Format,

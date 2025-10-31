@@ -33,8 +33,6 @@ interface  DocumentAPI
     interface DocumentFormat: ValInterface
     interface CaptureMethod: ValInterface
 
-    enum class TraumaEnum(override val value: Int): TraumaType
-
     enum class DocumentTypeEnum(override val value: Int): DocumentType
     {
         BIRTH_CERTIFICATE(1),

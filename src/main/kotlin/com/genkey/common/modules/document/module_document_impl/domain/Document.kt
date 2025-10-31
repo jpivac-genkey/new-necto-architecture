@@ -7,7 +7,7 @@ open class Document(
     override val documentType: DocumentAPI.DocumentType,
     override val documentNumber: String?,
     override val documentFormat: DocumentAPI.DocumentFormat?,
-    override val pages: List<DocumentAPI.IDocumentPage>,
+    override val pages: List<DocumentPage>,
     override val captureDate: Date,
     override val captureMethod: DocumentAPI.CaptureMethod?,
 ): DocumentAPI.IDocument
