@@ -29,6 +29,7 @@ open class ZEC_SummaryView : SummaryView()
         }
     }
 
+    @Composable
     override fun showDocuments(documents: List<Document>)
     {
 
