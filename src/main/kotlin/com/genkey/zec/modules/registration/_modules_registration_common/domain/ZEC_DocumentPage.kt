@@ -1,6 +1,5 @@
 package com.genkey.zec.modules.registration._modules_registration_common.domain
 
-import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.registration._modules_registration_common.domain.DocumentPage
 import com.genkey.common.modules.registration._modules_registration_common.domain.Image
