@@ -1,10 +1,8 @@
 package com.genkey.common.modules.registration.modules_registration_search_impl.repo
 
 import com.genkey.common.modules.basic.RepoResultState
-import com.genkey.common.modules.registration._modules_registration_common.repo.SubjectReadRepository
 import com.genkey.common.modules.registration.modules_registration_search_impl.domain.Criteria
 import com.genkey.common.modules.registration.modules_registration_search_impl.domain.SearchInfo
-import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -20,7 +18,10 @@ interface SearchRepository
     interface SearchResult
     {
         val totalCount: Int //No need for RepoResultState
-        fun getSearchInfos(fromIndex:Int, toIndex:Int): Flow<RepoResultState<List<SearchInfo>>>
+
+        //first to write the code without a flow, later a flow will be introduced
+        //fun getSearchInfos(fromIndex:Int, toIndex:Int): Flow<RepoResultState<List<SearchInfo>>>
+        fun getSearchInfos(fromIndex:Int, toIndex:Int): RepoResultState<List<SearchInfo>>
     }
 }
 

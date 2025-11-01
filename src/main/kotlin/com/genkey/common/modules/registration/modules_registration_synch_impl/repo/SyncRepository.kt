@@ -11,7 +11,10 @@ interface SyncRepository
     interface NotSyncedSubjects
     {
         val totalCount: RepoResultState<Int>
-        fun getSubjects(fromIndex:Int, toIndex:Int): Flow<RepoResultState<List<Subject>>>
+
+        //first to write the code without a flow, later a flow will be introduced
+        //fun getSubjects(fromIndex:Int, toIndex:Int): Flow<RepoResultState<List<Subject>>>
+        fun getSubjects(fromIndex:Int, toIndex:Int): RepoResultState<List<Subject>>
     }
 
     fun markAsSynced(subject: Subject): RepoResultState<Unit>

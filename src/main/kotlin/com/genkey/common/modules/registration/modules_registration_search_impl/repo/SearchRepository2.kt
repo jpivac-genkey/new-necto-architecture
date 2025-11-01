@@ -18,6 +18,8 @@ interface SearchRepository2: SubjectReadRepository
 
     interface SearchResult
     {
-        fun getNextSearchInfos(count:Int): Flow<RepoResultState<List<SearchInfo>>>
+        //first to write the code without a flow, later a flow will be introduced
+        //fun getNextSearchInfos(count:Int): Flow<RepoResultState<List<SearchInfo>>>
+        fun getNextSearchInfos(count:Int): RepoResultState<List<SearchInfo>>
     }
 }

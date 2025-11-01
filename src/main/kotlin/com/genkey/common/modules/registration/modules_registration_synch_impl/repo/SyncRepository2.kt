@@ -14,7 +14,8 @@ interface SyncRepository2
 
     interface NotSyncedSubjects
     {
-        fun getNextSubjects(count:Int): Flow<RepoResultState<List<Subject>>>
+        //fun getNextSubjects(count:Int): Flow<RepoResultState<List<Subject>>>
+        fun getNextSubjects(count:Int): RepoResultState<List<Subject>>
     }
 
     fun markAsSynced(subject: Subject): RepoResultState<Unit>

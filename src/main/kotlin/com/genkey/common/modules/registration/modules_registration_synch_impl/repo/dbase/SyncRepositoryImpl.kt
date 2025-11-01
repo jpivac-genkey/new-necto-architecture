@@ -30,7 +30,7 @@ class SyncRepositoryImpl : SyncRepository
             override val totalCount: RepoResultState<Int>
                 get() = TODO("Not yet implemented")
 
-            override fun getSubjects(fromIndex: Int, toIndex: Int): Flow<RepoResultState<List<Subject>>>
+            override fun getSubjects(fromIndex: Int, toIndex: Int): RepoResultState<List<Subject>>
             {
                 TODO("Not yet implemented")
                 //subjectReadRepository.readSubject(subjectID)
