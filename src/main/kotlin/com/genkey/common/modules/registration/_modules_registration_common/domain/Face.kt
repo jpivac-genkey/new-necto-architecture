@@ -22,11 +22,11 @@ import com.genkey.common.modules.face.module_face_capture_api.FaceCaptureAPI
 /**
  * SubjectId is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned null value, since that object
  * has never been in the dbase.
  */
 open class Face(
-    val id: UUID,
+    val id: UUID? = null,
     override val image:Image,
     override val thumbnailImage: Image?,
     override val isForcedCapture: Boolean? = false
@@ -34,7 +34,7 @@ open class Face(
 {
     //used for receiving the output from Document module
     constructor(_face: FaceCaptureAPI.IFace): this(
-        UUID.UNASSIGNED,
+        null,
         Image(_face.image),
         _face.thumbnailImage?.let{Image(it)},
         _face.isForcedCapture)

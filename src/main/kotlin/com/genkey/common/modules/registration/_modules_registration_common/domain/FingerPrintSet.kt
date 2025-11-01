@@ -18,21 +18,21 @@ CREATE TABLE public.fingerprints_profiles (
 /**
  * SubjectId is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned null value, since that object
  * has never been in the dbase.
  */
 abstract class FingerPrintSet(
-    val id: UUID
+    val id: UUID? = null
 )
 {
-    open class FingerPrints(id: UUID, override val individualFingers: List<FingerPrintsCommonAPI.IFingerPrint>):
+    open class FingerPrints(id: UUID? = null, override val individualFingers: List<FingerPrint>):
         FingerPrintSet(id), FingerPrintsCommonAPI.IFingerPrints
     {
         //used for receiving the output from FingerPrint Capture  module
         constructor(fingerPrints: FingerPrintsCommonAPI.IFingerPrints):
-            this(UUID.UNASSIGNED, fingerPrints.individualFingers)
+            this(null, fingerPrints.individualFingers.map { FingerPrint(it) })
     }
 
-    open class BioHashFingerPrints(id: UUID, val bioHash: ByteArray):
+    open class BioHashFingerPrints(id: UUID?, val bioHash: ByteArray):
         FingerPrintSet(id)
 }

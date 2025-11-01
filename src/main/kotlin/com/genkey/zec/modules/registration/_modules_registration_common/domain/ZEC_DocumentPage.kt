@@ -5,7 +5,7 @@ import com.genkey.common.modules.registration._modules_registration_common.domai
 import com.genkey.common.modules.registration._modules_registration_common.domain.Image
 import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
 
-class ZEC_DocumentPage(id: UUID,
+class ZEC_DocumentPage(id: UUID? = null,
                        pageCode: String? = null,
                        pageNumber: Int,
                        image: Image,
@@ -13,7 +13,7 @@ class ZEC_DocumentPage(id: UUID,
     DocumentPage(id,pageCode, pageNumber, image ), ZEC_DocumentAPI.IZEC_DocumentPage
 {
     //used for receiving the output from Document module
-    constructor(id: UUID, zec_documentPage: ZEC_DocumentAPI.IZEC_DocumentPage):
+    constructor(id: UUID? = null, zec_documentPage: ZEC_DocumentAPI.IZEC_DocumentPage):
             this(id,
                 zec_documentPage.pageCode,
                 zec_documentPage.pageNumber,

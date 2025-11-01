@@ -1,6 +1,5 @@
 package com.genkey.common.modules.registration._modules_registration_common.domain
 
-import com.genkey.common.modules.basic.ImageBytesHolder
 import com.genkey.common.modules.basic.UUID
 import com.genkey.common.modules.d_signature.module_signature_api.SignatureAPI
 
@@ -21,25 +20,25 @@ CREATE TABLE public.signatures_profiles (
 /**
  * SubjectId is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned a null value, since that object
  * has never been in the dbase.
  */
 
 abstract class Signature: SignatureAPI.ISignature
 {
-    abstract val id: UUID
+    abstract val id: UUID?
 
-    data class GoodSignature(override val id: UUID, override val image: Image): Signature(), SignatureAPI.ISignature.IGoodSignature
+    data class GoodSignature(override val id: UUID? = null, override val image: Image): Signature(), SignatureAPI.ISignature.IGoodSignature
     {
         //used for receiving the output from Signature module
-        constructor(goodSignature: SignatureAPI.ISignature.IGoodSignature): this(UUID.UNASSIGNED, Image(goodSignature.image))
+        constructor(goodSignature: SignatureAPI.ISignature.IGoodSignature): this(null, Image(goodSignature.image))
     }
 
-    data class ImpossibleToSign(override val id: UUID, override val reason: String):  Signature(), SignatureAPI.ISignature.IImpossibleToSign
+    data class ImpossibleToSign(override val id: UUID?= null, override val reason: String):  Signature(), SignatureAPI.ISignature.IImpossibleToSign
     {
 
         //used for receiving the output from Signature module
-        constructor(goodSignature: SignatureAPI.ISignature.IImpossibleToSign): this(UUID.UNASSIGNED, goodSignature.reason)
+        constructor(goodSignature: SignatureAPI.ISignature.IImpossibleToSign): this(null, goodSignature.reason)
     }
 
 

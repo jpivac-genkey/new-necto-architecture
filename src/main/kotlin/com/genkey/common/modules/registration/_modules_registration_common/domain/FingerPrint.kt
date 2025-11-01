@@ -23,12 +23,12 @@ CREATE TABLE public.fingerprints (
 /**
  * "fingerprints_profile_id" is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned null value, since that object
  * has never been in the dbase.
  */
-abstract class FingerPrint private constructor (val id: UUID, override val idc: Int): IFingerPrint
+abstract class FingerPrint private constructor (val id: UUID?, override val idc: Int): IFingerPrint
 {
-    open class GoodFingerPrint(id: UUID,
+    open class GoodFingerPrint(id: UUID? = null,
                                idc:Int,
                                override val image: Image
     ):
@@ -36,23 +36,23 @@ abstract class FingerPrint private constructor (val id: UUID, override val idc: 
     {
         //used for receiving the output from FingerPrint Capture  module
         constructor(fingerPrint:IFingerPrint.IGoodFingerPrint):
-                this(UUID.UNASSIGNED, fingerPrint.idc, Image(fingerPrint.image))
+                this(null, fingerPrint.idc, Image(fingerPrint.image))
     }
 
 
-    open class ImpossibleToCapture( id: UUID,
+    open class ImpossibleToCapture( id: UUID? = null,
                                    idc: Int,
                                    override val reason: String):
         FingerPrint(id, idc), IFingerPrint.IImpossibleToCapture
     {
         //used for receiving the output from FingerPrint Capture  module
         constructor(fingerPrint:IFingerPrint.IImpossibleToCapture):
-                this(UUID.UNASSIGNED, fingerPrint.idc, fingerPrint.reason)
+                this(null, fingerPrint.idc, fingerPrint.reason)
     }
 
 
 
-    open class TraumaFingerPrint(id: UUID,
+    open class TraumaFingerPrint(id: UUID? = null,
                                  idc:Int,
                                  override val traumaType: TraumaType,
                                  override val traumaDetails: String,
@@ -61,7 +61,7 @@ abstract class FingerPrint private constructor (val id: UUID, override val idc: 
     {
         //used for receiving the output from FingerPrint Capture  module
         constructor(fingerPrint:IFingerPrint.ITraumaFingerPrint):
-                this(UUID.UNASSIGNED, fingerPrint.idc, fingerPrint.traumaType, fingerPrint.traumaDetails, fingerPrint.isTraumaPermanent)
+                this(null, fingerPrint.idc, fingerPrint.traumaType, fingerPrint.traumaDetails, fingerPrint.isTraumaPermanent)
     }
 
 

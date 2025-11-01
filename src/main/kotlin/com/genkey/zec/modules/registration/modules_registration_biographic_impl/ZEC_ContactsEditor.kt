@@ -17,7 +17,7 @@ class ZEC_ContactsEditor : ContactsEditor_Impl()
         }
     }
 
-    override fun collectFromFields(uuid: UUID): ZEC_Contact
+    override fun collectFromFields(uuid: UUID?): ZEC_Contact
     {
         val updatedContact = super.collectFromFields(uuid)
         val zecField1 = collectFromGUIControl() as Int

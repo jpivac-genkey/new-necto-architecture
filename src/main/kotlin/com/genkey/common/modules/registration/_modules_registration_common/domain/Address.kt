@@ -27,11 +27,11 @@ CREATE TABLE public.addresses_profiles (
 /**
  * SubjectId is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is null value, since that object
  * has never been in the dbase.
  */
 open class Address(
-    val id: UUID,
+    val id: UUID? = null,
     val addressType: AddressType,
     val country: String? = null,
     val region: String? = null,

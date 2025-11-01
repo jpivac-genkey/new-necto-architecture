@@ -9,11 +9,11 @@ import java.util.*
  * The values from that table are  the 'id', 'registrationDate' and the rest in the 'biographics'.
  *
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned a null value, since that object
  * has never been in the dbase.
  */
 open class Subject(
-    val id: UUID,
+    val id: UUID? = null,
     val registrationDate: Date,
     open val biographics: Biographics,
     val biometrics: Biometrics? = null,

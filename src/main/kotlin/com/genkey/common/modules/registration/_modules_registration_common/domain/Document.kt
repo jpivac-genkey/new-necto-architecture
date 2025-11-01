@@ -25,12 +25,12 @@ CREATE TABLE public.documents_profiles (
 /**
  * SubjectId is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned null value, since that object
  * has never been in the dbase.
  */
 
 open class Document(
-    val id: UUID,
+    val id: UUID? = null,
     override val documentType: DocumentType,
     override val documentNumber: String? = null,
     override val documentFormat: DocumentFormat? = null,
@@ -41,7 +41,7 @@ open class Document(
 {
     //used for receiving the output from Document module
     constructor(_document:DocumentAPI.IDocument): this(
-        UUID.UNASSIGNED,
+        null,
         _document.documentType,
         _document.documentNumber,
         _document.documentFormat,

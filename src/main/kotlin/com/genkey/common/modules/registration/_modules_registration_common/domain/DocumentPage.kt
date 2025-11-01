@@ -19,13 +19,13 @@ CREATE TABLE public.documents_pages (
 /**
  * document_profile_id is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned null value, since that object
  * has never been in the dbase.
  */
 
 
 open class DocumentPage(
-    val id: UUID,
+    val id: UUID? = null,
     override val pageCode: String? = null,
     override val pageNumber: Int,
     override val image: Image
@@ -33,7 +33,7 @@ open class DocumentPage(
 {
     //used for receiving the output from Document module
     constructor(_documentPage: DocumentAPI.IDocumentPage ):this(
-        UUID.UNASSIGNED,
+        null,
         _documentPage.pageCode,
         _documentPage.pageNumber,
         Image(_documentPage.image)

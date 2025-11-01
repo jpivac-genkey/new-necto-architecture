@@ -5,7 +5,7 @@ import com.genkey.common.modules.registration._modules_registration_common.domai
 
 
 class ZEC_Contact(
-    id: UUID,
+    id: UUID? = null,
     contactType: Contact.ContactType,
     contactInfo: String,
     isPrimary: Boolean,

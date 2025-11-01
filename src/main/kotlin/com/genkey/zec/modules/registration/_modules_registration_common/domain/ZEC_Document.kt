@@ -6,7 +6,7 @@ import com.genkey.common.modules.registration._modules_registration_common.domai
 import com.genkey.zec.modules.document.module_document_api.ZEC_DocumentAPI
 import java.util.*
 
-class ZEC_Document(id: UUID,
+class ZEC_Document(id: UUID? = null,
                  documentType: DocumentType,
                  documentNumber: String? = null,
                  documentFormat: DocumentFormat? = null,
@@ -19,11 +19,11 @@ class ZEC_Document(id: UUID,
 {
     //used for receiving the output from Document module
     constructor(_zec_document: ZEC_DocumentAPI.IZEC_Document): this(
-        UUID.UNASSIGNED,
+        null,
         _zec_document.documentType,
         _zec_document.documentNumber,
         _zec_document.documentFormat,
-        _zec_document.pages.map { ZEC_DocumentPage(UUID.UNASSIGNED, it) },
+        _zec_document.pages.map { ZEC_DocumentPage(null, it) },
         _zec_document.captureDate,
         _zec_document.captureMethod,
         _zec_document.zecField2)

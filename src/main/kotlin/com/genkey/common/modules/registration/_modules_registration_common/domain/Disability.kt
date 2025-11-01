@@ -20,11 +20,11 @@ CREATE TABLE public.disabilities_profiles (
 /**
  * SubjectId is removed, since this class's belonging to a subject is expressed in another way.
  * "id" is here just for update when this object is to be written to the exactly same row in the dbase.
- * In case of creation of a new object, the id is assigned a 'UUID.UNASSIGNED' value, since that object
+ * In case of creation of a new object, the id is assigned a null value, since that object
  * has never been in the dbase.
  */
 open class Disability(
-    val id: UUID,
+    val id: UUID? = null,
     val disabilityType: TraumaType,
     val disabilityDetails: TraumaDetail? = null,
     val isPermanent: Boolean? = true

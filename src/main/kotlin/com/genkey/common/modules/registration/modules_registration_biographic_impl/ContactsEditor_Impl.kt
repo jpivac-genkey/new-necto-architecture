@@ -22,7 +22,7 @@ open class ContactsEditor_Impl: ContactsEditor
 
         //wait until user fills them
 
-        val contact = collectFromFields(UUID.UNASSIGNED)
+        val contact = collectFromFields()
         return contact
     }
 
@@ -58,7 +58,7 @@ open class ContactsEditor_Impl: ContactsEditor
         }
     }
 
-    protected open fun collectFromFields(uuid:UUID): Contact
+    protected open fun collectFromFields(uuid:UUID? = null): Contact
     {
         val contactType =  collectFromGUIControl() as Contact.ContactType
         val contactInfo =  collectFromGUIControl() as String

@@ -8,7 +8,7 @@ import java.util.*
 
 
 open class ZEC_Subject(
-    id: UUID,
+    id: UUID? = null,
     registrationDate: Date,
     override val biographics: ZEC_Biographics,
     biometrics: Biometrics? = null,
